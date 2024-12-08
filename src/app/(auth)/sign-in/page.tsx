@@ -1,10 +1,9 @@
-import React from 'react';
+// import { redirect } from "next/navigation";
+import { SignInCard } from "@/features/auth/components/sign-in-card";
 
-const SignIn = () => {
+const SignIn =  () => {
     return (
-        <div>
-            Sign in page
-        </div>
+       <SignInCard />
     );
 };
 
