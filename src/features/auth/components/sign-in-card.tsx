@@ -25,6 +25,11 @@ export const SignInCard = () => {
             password: "",
         }
     });
+
+    const onSubmit = (values: LoginSchema) => {
+        console.log(values);
+    };
+
     return (
         <Card className="size-full md:w-[487px] border-none shadow-none">
             <CardHeader className="flexx items-center justify-center text-center p-7">
@@ -35,7 +40,7 @@ export const SignInCard = () => {
             </div>
             <CardContent className="p-7">
                 <Form {...form}>
-                    <form className="space-y-4">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <FormField
                             name="email"
                             render={({ field }) => (

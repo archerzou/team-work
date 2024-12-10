@@ -34,7 +34,8 @@ export const SignUpCard = () => {
         },
     });
 
-    const onSubmit = () => {
+    const onSubmit = (values: RegisterSchema) => {
+        console.log(values);
     };
     return (
         <Card className="size-full md:w-[487px] border-none shadow-none">
