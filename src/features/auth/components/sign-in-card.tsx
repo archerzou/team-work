@@ -16,8 +16,10 @@ import {
 } from "@/components/ui/form";
 
 import { type LoginSchema, loginSchema } from "../schemas";
+import { useLogin } from "../api/use-login";
 
 export const SignInCard = () => {
+    const { mutate, isPending } = useLogin();
     const form = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -27,7 +29,7 @@ export const SignInCard = () => {
     });
 
     const onSubmit = (values: LoginSchema) => {
-        console.log(values);
+        mutate({ json: values });
     };
 
     return (
@@ -83,7 +85,7 @@ export const SignInCard = () => {
             <CardContent className="p-7 flex flex-col gap-y-4">
                 <Button
                     onClick={() => {}}
-                    disabled ={false}
+                    disabled={isPending}
                     variant="secondary"
                     size="lg"
                     className="w-full"
