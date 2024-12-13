@@ -22,9 +22,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { type RegisterSchema, registerSchema } from "../schemas";
+import { useRegister } from "../api/use-register";
 
 
 export const SignUpCard = () => {
+    const { mutate, isPending } = useRegister();
     const form = useForm<RegisterSchema>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
@@ -35,7 +37,7 @@ export const SignUpCard = () => {
     });
 
     const onSubmit = (values: RegisterSchema) => {
-        console.log(values);
+        mutate({ json: values });
     };
     return (
         <Card className="size-full md:w-[487px] border-none shadow-none">
@@ -127,7 +129,7 @@ export const SignUpCard = () => {
                 {/*</Button>*/}
                 <Button
                     onClick={()=> {}}
-                    disabled={false}
+                    disabled={isPending}
                     variant="secondary"
                     size="lg"
                     className="w-full"
