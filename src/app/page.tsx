@@ -1,10 +1,15 @@
-import { Button } from "@/components/ui/button"
+import {redirect} from "next/navigation";
+import {UserButton} from "@/features/auth/components/user-button";
+import {getCurrent} from "@/features/auth/actions";
 
-export default function Home() {
-  return (
+export default async function Home() {
+    const user = await getCurrent();
+
+    if (!user) redirect("/sign-in");
+
+    return (
       <div>
-        <Button variant="destructive" size="sm">Click me</Button>
-        <p className="text-red-500">Archer</p>
+        <UserButton />
       </div>
-  );
+    );
 }
