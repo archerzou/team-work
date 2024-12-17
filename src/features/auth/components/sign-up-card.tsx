@@ -108,7 +108,7 @@ export const SignUpCard = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full" size="lg" disabled={false}>
+                        <Button className="w-full" size="lg" disabled={isPending}>
                             Register
                         </Button>
                     </form>
