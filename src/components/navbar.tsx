@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 
 import { UserButton } from "@/features/auth/components/user-button";
+import { MobileSidebar } from "./mobile-sidebar";
 
 
 const pathnameMap = {
@@ -30,6 +31,7 @@ export const Navbar = () => {
                 <h1 className="text-2xl font-bold">{title}</h1>
                 <p className="text-muted-foreground">{description}</p>
             </div>
+            <MobileSidebar />
             <UserButton />
         </nav>
     );
