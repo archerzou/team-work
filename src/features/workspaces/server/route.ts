@@ -7,6 +7,7 @@ import { sessionMiddleware } from "@/lib/session-middleware";
 import {
     DATABASE_ID,
     IMAGES_BUCKET_ID,
+    MEMBERS_ID,
     WORKSPACE_ID,
 } from "@/config";
 
@@ -15,23 +16,25 @@ import {
     inviteCodeSchema,
     updateWorkspaceSchema,
 } from "../schemas";
+import { MemberRole } from "@/features/members/types";
+import { generateInviteCode, INVITECODE_LENGTH } from "@/lib/utils";
 
 const app = new Hono()
     .get("/", sessionMiddleware, async (c) => {
         const user = c.get("user");
         const databases = c.get("databases");
-        // const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
-        //     Query.equal("userId", user.$id),
-        // ]);
-        //
-        // if (members.total == 0) {
-        //     return c.json({ data: { documents: [] }, total: 0 });
-        // }
-        // const workspaceIds = members.documents.map((member) => member.workspaceId);
+        const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
+            Query.equal("userId", user.$id),
+        ]);
+
+        if (members.total == 0) {
+            return c.json({ data: { documents: [] }, total: 0 });
+        }
+        const workspaceIds = members.documents.map((member) => member.workspaceId);
         const workspaces = await databases.listDocuments(
             DATABASE_ID,
             WORKSPACE_ID,
-            // [Query.orderDesc("$createdAt"), Query.contains("$id", workspaceIds)]
+            [Query.orderDesc("$createdAt"), Query.contains("$id", workspaceIds)]
         );
         return c.json({ data: workspaces });
     })
