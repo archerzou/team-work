@@ -1,11 +1,15 @@
-import React from 'react';
+import { getCurrent } from "@/features/auth/queries";
+import { redirect } from "next/navigation";
+// import { WorkspaceIdClient } from "./client";
 
-const Page = () => {
+const WorkspaceIdpage = async () => {
+    const current = await getCurrent();
+    if (!current) redirect("/sign-in");
     return (
         <div>
-            WorkSpaceId
+            Workspace Id
         </div>
     );
 };
 
-export default Page;
+export default WorkspaceIdpage;
