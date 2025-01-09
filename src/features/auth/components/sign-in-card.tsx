@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { signUpWithGithub } from "@/lib/oauth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
@@ -25,13 +27,12 @@ export const SignInCard = () => {
         defaultValues: {
             email: "",
             password: "",
-        }
+        },
     });
 
     const onSubmit = (values: LoginSchema) => {
         mutate({ json: values });
     };
-
     return (
         <Card className="size-full md:w-[487px] border-none shadow-none">
             <CardHeader className="flexx items-center justify-center text-center p-7">
@@ -45,6 +46,7 @@ export const SignInCard = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <FormField
                             name="email"
+                            control={form.control}
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
@@ -60,6 +62,7 @@ export const SignInCard = () => {
                         />
                         <FormField
                             name="password"
+                            control={form.control}
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
@@ -73,7 +76,7 @@ export const SignInCard = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full" size="lg">
+                        <Button className="w-full" size="lg" disabled={isPending}>
                             Login
                         </Button>
                     </form>
@@ -84,7 +87,7 @@ export const SignInCard = () => {
             </div>
             <CardContent className="p-7 flex flex-col gap-y-4">
                 <Button
-                    onClick={() => {}}
+                    onClick={() => signUpWithGithub()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"

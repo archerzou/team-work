@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { type RegisterSchema, registerSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
-
+import {signUpWithGithub} from "@/lib/oauth";
 
 export const SignUpCard = () => {
     const { mutate, isPending } = useRegister();
@@ -128,7 +128,7 @@ export const SignUpCard = () => {
                 {/*	Login with Google*/}
                 {/*</Button>*/}
                 <Button
-                    onClick={()=> {}}
+                    onClick={()=>signUpWithGithub()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"
