@@ -92,7 +92,7 @@ export const CreateTaskForm = ({
                                     <FormItem>
                                         <FormLabel>Task name</FormLabel>
                                         <FormControl>
-                                            <Input {...field} placeholder="Enter task name" />
+                                            <Input {...field } placeholder="Enter task name" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

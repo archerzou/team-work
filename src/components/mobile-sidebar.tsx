@@ -5,7 +5,8 @@ import { MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet,SheetTitle, SheetContent, SheetTrigger } from "./ui/sheet";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Sidebar } from "./sidebar";
 
 export const MobileSidebar = () => {
@@ -16,6 +17,11 @@ export const MobileSidebar = () => {
     }, [pathname]);
     return (
         <Sheet modal={false} open={isOpen} onOpenChange={setIsOpen}>
+            <VisuallyHidden.Root>
+                <SheetTitle>
+                    Menu
+                </SheetTitle>
+            </VisuallyHidden.Root>
             <SheetTrigger asChild>
                 <Button variant="secondary" className="lg:hidden">
                     <MenuIcon className="size-4 text-neutral-500" />
