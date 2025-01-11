@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Built a Fullstack team work space with React, Next.js, TailwindCSS & Appwrite
 
-## Getting Started
+- [Dashboard]
+![dashboard.png](public/screenshots/dashboard.png)
+- [tasks view kanban]
+![tasks.png](public/screenshots/tasks.png)
+- [workspace settings]
+- ![settings.png](public/screenshots/settings.png)
 
-First, run the development server:
+Key Features:
+```
+🏢 Workspaces
+📊 Projects / Epics
+✅ Tasks
+📋 Kanban Board View
+🗃️ Data Table View
+📅 Calendar View
+✉️ Invite System
+⚙️ Workspace and Project Settings
+🖼️ Image Uploads (for avatars and attachments)
+🔌 Appwrite SDK Integration
+⚛️ Next.js 14 Framework
+🎨 Shadcn UI & TailwindCSS Styling
+🔍 Advanced Search and Filtering
+📈 Analytics Dashboard
+👥 User Roles and Permissions
+🔒 Authentication (OAuth and Email)
+📱 Responsive Design (Mobile-friendly)
+🚀 API using Hono.js
+```
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/archerzou/team-work.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Setup .env file
 
-## Learn More
+```js
+NEXT_PUBLIC_APP_URL= "http://localhost:3000"
 
-To learn more about Next.js, take a look at the following resources:
+NEXT_PUBLIC_APPWRITE_ENDPOINT=
+NEXT_PUBLIC_APPWRITE_PROJECT=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXT_PUBLIC_APPWRITE_DATABASE_ID=
+NEXT_PUBLIC_APPWRITE_WORKSPACES_ID=
+NEXT_PUBLIC_APPWRITE_MEMBERS_ID=
+NEXT_PUBLIC_APPWRITE_IMAGES_BUCKET_ID=
+NEXT_PUBLIC_APPWRITE_PROJECTS_ID=
+NEXT_PUBLIC_APPWRITE_TASKS_ID=
+NEXT_APPWRITE_KEY=0
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Start the app
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```shell
+npm run dev
+```
